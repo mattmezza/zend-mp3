@@ -530,7 +530,8 @@ class Zend_Media_Iso14496_Box
         }
         if (class_exists
             ($classname = 'Zend_Media_Iso14496_Box_' . ucfirst($name))) {
-            return $this->addBox(new $classname());
+                $daClass = new $classname($this->_reader);
+            return $this->addBox($daClass);
         }
         
         throw new Zend_Media_Iso14496_Exception('Unknown box/field: ' . $name);
